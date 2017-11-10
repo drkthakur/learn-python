@@ -1,0 +1,61 @@
+The next step is to begin to define and document “contracts” between applications
+using these techniques. The general name for these application-to-application contracts
+is Application Program Interfaces or APIs. When we use an API, generally
+one program makes a set of services available for use by other applications and
+publishes the APIs (i.e., the “rules”) that must be followed to access the services
+provided by the program.
+
+When we begin to build our programs where the functionality of our program
+includes access to services provided by other programs, we call the approach a
+Service-Oriented Architecture or SOA. A SOA approach is one where our overall
+application makes use of the services of other applications. A non-SOA approach
+is where the application is a single standalone application which contains all of the
+code necessary to implement the application.
+
+We see many examples of SOA when we use the web. We can go to a single web
+site and book air travel, hotels, and automobiles all from a single site. The data
+for hotels is not stored on the airline computers. Instead, the airline computers
+contact the services on the hotel computers and retrieve the hotel data and present
+it to the user. When the user agrees to make a hotel reservation using the airline
+site, the airline site uses another web service on the hotel systems to actually make
+the reservation. And when it comes time to charge your credit card for the whole
+transaction, still other computers become involved in the process.
+
+A Service-Oriented Architecture has many advantages including: (1) we always
+maintain only one copy of data (this is particularly important for things like hotel
+reservations where we do not want to over-commit) and (2) the owners of the data
+can set the rules about the use of their data. With these advantages, an SOA
+system must be carefully designed to have good performance and meet the user’s
+needs.
+When an application makes a set of services in its API available over the web, we
+call these web services.
+
+
+#http://maps.googleapis.com/maps/api/geocode/json?address=faridabad
+
+#######################################################################
+
+
+security and api-usage
+
+
+
+It is quite common that you need some kind of “API key” to make use of a vendor’s
+API. The general idea is that they want to know who is using their services and
+how much each user is using. Perhaps they have free and pay tiers of their services
+or have a policy that limits the number of requests that a single individual can
+make during a particular time period.
+Sometimes once you get your API key, you simply include the key as part of POST
+data or perhaps as a parameter on the URL when calling the API.
+Other times, the vendor wants increased assurance of the source of the requests
+and so they add expect you to send cryptographically signed messages using shared
+keys and secrets. A very common technology that is used to sign requests over
+the Internet is called OAuth. You can read more about the OAuth protocol at
+www.oauth.net.
+As the Twitter API became increasingly valuable, Twitter went from an open
+and public API to an API that required the use of OAuth signatures on each API
+request. Thankfully there are still a number of convenient and free OAuth libraries
+so you can avoid writing an OAuth implementation from scratch by reading the
+specification. These libraries are of varying complexity and have varying degrees
+of richness. The OAuth web site has information about various OAuth libraries
+
